@@ -8,6 +8,7 @@ function App() {
 	const [geo, setGeo] = useState(undefined);
 	const [weatherbyDay, setWeatherByDay] = useState('');
 	const [loadingData, setLoadingData] = useState(true);
+	const [hotelInfo, setHotelInfo ] = useState()
 
 	useEffect(() => {
 		fetchData();
@@ -30,6 +31,9 @@ function App() {
 		console.log(weatherDay);
 		console.log(weather);
 		setLoadingData(false);
+		const name = response.data.hotel.name
+		const url = response.data.hotel.url
+		setHotelInfo({name, url})
 	};
 
 	const { isLoaded } = useJsApiLoader({
@@ -37,7 +41,7 @@ function App() {
 	});
 
 	if (!isLoaded) {
-		return <h1>O</h1>;
+		return <></>;
 	}
 
 	return (
@@ -62,6 +66,10 @@ function App() {
 				</div>
 				<div className='center'>
 					<button onClick={() => window.location.reload(false)}>Losuj ponownie</button>
+					<div>
+						<p>Hotel: {hotelInfo.name}</p>
+						<a href={hotelInfo.url}>Strona hotelu</a> 
+					</div>
 					<p>Pogoda:</p>
 					<div className='flex'>
 						{weatherbyDay.map((element) => (
