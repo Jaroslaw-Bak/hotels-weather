@@ -20,11 +20,11 @@ function App() {
 		setGeo({ lat, lng });
 		const weather = response.data.weather.list;
 		const weatherDay = [
-			[weather[1].main.temp, weather[1].dt_txt.slice(0,10)],
-			[weather[9].main.temp, weather[1].dt_txt.slice(0,10)],
-			[weather[17].main.temp, weather[1].dt_txt.slice(0,10)],
-			[weather[25].main.temp, weather[1].dt_txt.slice(0,10)],
-			[weather[33].main.temp, weather[1].dt_txt.slice(0,10)]
+			[weather[1].main.temp, weather[1].dt_txt.slice(0, 10)],
+			[weather[9].main.temp, weather[9].dt_txt.slice(0, 10)],
+			[weather[17].main.temp, weather[17].dt_txt.slice(0, 10)],
+			[weather[25].main.temp, weather[25].dt_txt.slice(0, 10)],
+			[weather[33].main.temp, weather[33].dt_txt.slice(0, 10)],
 		];
 		setWeatherByDay(weatherDay);
 		console.log(weatherDay);
@@ -48,7 +48,7 @@ function App() {
 					<GoogleMap
 						center={geo}
 						zoom={6}
-						mapContainerStyle={{ width: '100%', height: '80vh' }}
+						mapContainerStyle={{ width: '100%', height: '75vh' }}
 						options={{
 							zoomControl: false,
 							streetViewControl: false,
@@ -59,14 +59,15 @@ function App() {
 					>
 						<MarkerF position={geo} />
 					</GoogleMap>
-					<button onClick={() => map.panTo(geo)}>Tu</button>
+					<button onClick={() => map.panTo(geo)}>Wyśrodkuj</button>
 				</div>
 				<div className='center'>
+					<button onClick={() => window.location.reload(false)}>Losuj ponownie</button>
 					<p>Pogoda:</p>
 					<div className='flex'>
 						{weatherbyDay.map((element) => (
 							<div>
-                <p>{element[1]}</p>
+								<p>{element[1]}</p>
 								<p>{element[0]}°C</p>
 							</div>
 						))}
