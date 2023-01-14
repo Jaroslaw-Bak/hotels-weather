@@ -22,7 +22,7 @@ const APIKEY = process.env.APIKEY
 
 app.get('/', async (req, res) => {
 	try {
-		const random = Math.floor(Math.random() * 4);
+		const random = Math.floor(Math.random() * 7);
 		const hotel = await Hotel.findOne({id:random})
 		const weather = await axios.get(
 			`https://api.openweathermap.org/data/2.5/forecast?units=metric&lat=${hotel.lat}&lon=${hotel.lon}&appid=${APIKEY}`

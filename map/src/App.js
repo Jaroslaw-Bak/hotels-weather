@@ -37,7 +37,7 @@ function App() {
 	});
 
 	if (!isLoaded) {
-		return <h1>dupa</h1>;
+		return <h1>O</h1>;
 	}
 
 	return (
@@ -59,7 +59,6 @@ function App() {
 					>
 						<MarkerF position={geo} />
 					</GoogleMap>
-					<button onClick={() => map.panTo(geo)}>Wyśrodkuj</button>
 				</div>
 				<div className='center'>
 					<button onClick={() => window.location.reload(false)}>Losuj ponownie</button>
